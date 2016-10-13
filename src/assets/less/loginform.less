@@ -1,0 +1,47 @@
+@import "./base.less";
+.login-form{
+  .title{
+    padding-left: 50px;
+    padding-bottom: 30px;
+    font-size: 30px;
+  }
+  width: 100%;
+  .input-wrapper{
+    input{
+      display: block;
+      width: 100%;
+      background: none;
+      border: 0;
+      outline:0;
+      padding: 20px 50px;
+      font-size: 1.2em;
+      background-color: rgba(255, 255, 255, 0.02);
+      border-top: rgba(255, 255, 255, 0.03) 1px solid;
+      border-bottom: rgba(255, 255, 255, 0.03) 1px solid;
+      margin-top: -1px;
+    }
+  }
+  .submit-group{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .login-button{
+      background: none;
+      border: @font-import solid 1px;
+      border-left: 0;
+      color:@font-import;
+      padding: 10px 0;
+      font-size: 1.1em;
+      width: 220px;
+      border-radius: 0 100px 100px 0;
+      margin-right: 50px;
+      &.register{
+        border-radius: 50px 0 0 50px;
+        border-left: 1px solid;
+        border-right: 0;
+        margin-right: 0;
+      }
+    }
+  }
+}
