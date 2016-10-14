@@ -4,8 +4,8 @@
       {{'Login to your account'}}
     </p>
     <div class="input-wrapper">
-      <input type="text" placeholder="Username" required>
-      <input type="password" placeholder="Password" required>
+      <input type="text" placeholder="Username" v-model="username" required>
+      <input type="password" placeholder="Password" v-model="password" required>
     </div>
     <div class="submit-group">
       <div>
@@ -27,6 +27,8 @@
 export default {
   data () {
     return {
+      username: '',
+      password: ''
     }
   },
   methods: {
@@ -34,6 +36,9 @@ export default {
       this.$router.replace({name: 'register'})
     },
     formSubmit () {
+      this.$post(this.api.login, this.$data).then(r => {
+        console.log('post success: ', r)
+      })
       console.log('login')
     }
   }

@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Api from '../Api'
 Vue.use(Vuex)
 
 const state = {
-  toastQueen: []
+  toastQueen: [],
+  loginUser: null,
+  token: null,
+  api: Api
 }
 
 const mutations = {

@@ -4,9 +4,9 @@
       {{'Register a new account'}}
     </p>
     <div class="input-wrapper">
-      <input type="text" placeholder="Username" required>
-      <input type="password" placeholder="Password" required>
-      <input type="email" placeholder="Email" required>
+      <input type="text" placeholder="Username" v-model="username" required>
+      <input type="password" placeholder="Password" v-model="password" required>
+      <input type="email" placeholder="Email" v-model="email" required>
     </div>
     <div class="submit-group">
       <div>
@@ -27,6 +27,9 @@
 export default {
   data () {
     return {
+      username: '',
+      password: '',
+      email: ''
     }
   },
   methods: {
@@ -34,6 +37,9 @@ export default {
       this.$router.replace({name: 'login'})
     },
     formSubmit () {
+      this.$post(this.api.register, this.$data).then(({result}) => {
+        console.log(result)
+      })
       console.log('rgs')
     }
   }

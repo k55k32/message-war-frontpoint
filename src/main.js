@@ -6,38 +6,36 @@ import VueResource from 'vue-resource'
 import App from './App'
 import store from './vuex/store'
 
+import RoutesConfig from './config/RoutesConfig'
+import HttpConfig from './config/HttpConfig'
+import HttpInterceptor from './config/HttpInterceptor'
 Vue.use(VueResource)
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/login',
-    component: r => require(['src/pages/login/Login.vue'], r),
-    children: [
-      {
-        path: 'login',
-        name: 'login',
-        component: r => require(['src/pages/login/LoginForm.vue'], r)
-      },
-      {
-        path: 'register',
-        name: 'register',
-        component: r => require(['src/pages/login/RegisterForm.vue'], r)
-      }
-    ]
-  }
-]
+// http init, set http root ,and add http interceptor
+HttpConfig()
 
-const router = new VueRouter({routes})
+const router = new VueRouter({routes: RoutesConfig})
 
 Vue.mixin({
+  computed: {
+    api () {
+      return this.$store.state.api
+    }
+  },
   methods: {
-    toast (content, title = '消息提醒', timeout, type = '') {
-      timeout = timeout || parseInt(content.length / 4 * 1000)
+    toast (content = '', title = '消息提醒', timeout, type = '') {
+      timeout = timeout || parseInt(content.length / 4 * 1000) || parseInt(title.length / 4 * 1000)
       this.$store.commit('toast', {content, title, timeout, type})
     },
     closeToast (id) {
       this.$store.commit('closeToast', id)
+    },
+    $post (url, body, options) {
+      return this.$http.post(url, body, options)
+    },
+    $get (url, options) {
+      return this.$http.get(url, options)
     }
   }
 })
@@ -50,4 +48,4 @@ const app = new Vue({
   store: store
 })
 
-console.log(app)
+HttpInterceptor(app, router)

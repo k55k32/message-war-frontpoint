@@ -20,7 +20,9 @@
         <transition name="fade"
           enter-active-class="animated fadeInDown"
           leave-active-class="animated fadeOutDown" mode="out-in">
-          <router-view></router-view>
+          <keep-alive>
+            <router-view></router-view>
+          </keep-alive>
         </transition>
       </div>
       <div class="">
