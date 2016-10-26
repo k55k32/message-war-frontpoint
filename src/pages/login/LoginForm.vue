@@ -1,26 +1,15 @@
-<template>
-  <form class="login-form" @submit.prevent="formSubmit">
-    <p class="title">
-      {{'Login to your account'}}
-    </p>
-    <div class="input-wrapper">
-      <input type="text" placeholder="Username" v-model="username" required>
-      <input type="password" placeholder="Password" v-model="password" required>
-    </div>
-    <div class="submit-group">
-      <div>
-        <button type="submit" class="login-button">
-          {{'LOGIN'}}
-        </button>
-        <a>forget password?</a>
-      </div>
-      <div>
-        <button type="button" class="login-button register" @click="switchRegister">
-          {{'REGISTER'}}
-        </button>
-      </div>
-    </div>
-  </form>
+<template lang="jade">
+form.login-form(@submit.prevent="formSubmit")
+  p.title Login to your account
+  .input-wrapper
+    input(type="text" placeholder="Username" v-model="username" required)
+    input(type="password" placeholder="Password" v-model="password" required)
+  .submit-group
+    div
+      button.login-button(type="submit") LOGIN
+      a forget password?
+    div
+      button.login-button.register(type="button" @click="switchRegister") REGISTER
 </template>
 
 <script>
