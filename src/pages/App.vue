@@ -24,6 +24,6 @@ export default {
 </script>
 
 <style lang="less">
-@import "./assets/css/animate.css";
-@import "./assets/less/global.less";
+@import "../assets/css/animate.css";
+@import "../assets/less/global.less";
 </style>

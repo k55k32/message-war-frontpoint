@@ -1,8 +1,6 @@
 import Vue from 'vue'
 
 export default (app, router) => {
-  console.log(app, router)
-
   Vue.http.interceptors.push((request, next) => {
     if (request.method.toLowerCase() === 'post') {
       // 拦截所有post请求

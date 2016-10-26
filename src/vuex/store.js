@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Api from '../Api'
+import Api from './Api'
 Vue.use(Vuex)
 
 const state = {
